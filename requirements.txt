@@ -1,0 +1,8 @@
+# Python dependencies for the ingestion layer and orchestration.
+# Populate this once you decide on Airflow + database/warehouse + dbt adapters.
+
+apache-airflow
+dbt-core
+requests
+python-dotenv
+

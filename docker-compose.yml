@@ -1,0 +1,13 @@
+services:
+  # Placeholder compose file.
+  # Add your Airflow/DB/warehouse services when you decide on the target stack.
+  #
+  # Example idea:
+  # - airflow-scheduler
+  # - airflow-webserver
+  # - postgres (metadata db)
+  # - warehouse (e.g., postgres, mysql, snowflake via adapters, etc.)
+  placeholder:
+    image: alpine:3.20
+    command: ["sh", "-c", "echo 'Add real services here' && sleep 3600"]
+
