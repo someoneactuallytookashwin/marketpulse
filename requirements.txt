@@ -1,8 +1,10 @@
-# Python dependencies for the ingestion layer and orchestration.
-# Populate this once you decide on Airflow + database/warehouse + dbt adapters.
-
-apache-airflow
-dbt-core
-requests
-python-dotenv
-
+```
+yfinance==0.2.37
+pandas==2.2.0
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.25
+fredapi==0.5.1
+python-dotenv==1.0.0
+apache-airflow==2.8.1
+dbt-postgres==1.7.0
+```
