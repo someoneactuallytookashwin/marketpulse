@@ -1,12 +1,15 @@
 import pandas as pd
 from fredapi import Fred
 from sqlalchemy import create_engine, text
-from dotenv import load_dotenv
 import os
 
-load_dotenv()
+try:
+    from airflow.models import Variable
+    FRED_API_KEY = Variable.get("FRED_API_KEY")
+except Exception:
+    FRED_API_KEY = os.getenv("FRED_API_KEY")
 
-DB_URL = f"postgresql+psycopg2://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+DB_URL = "postgresql+psycopg2://airflow:airflow@postgres:5432/airflow"
 
 FRED_SERIES = {
     'FEDFUNDS': 'Federal Funds Rate',
@@ -17,7 +20,7 @@ FRED_SERIES = {
 }
 
 def create_table(engine):
-    with engine.connect() as conn:
+    with engine.begin() as conn:
         conn.execute(text("""
             CREATE TABLE IF NOT EXISTS bronze_macro_indicators (
                 id SERIAL PRIMARY KEY,
@@ -28,7 +31,6 @@ def create_table(engine):
                 ingested_at TIMESTAMP DEFAULT NOW()
             )
         """))
-        conn.commit()
 
 def ingest_series(series_id, series_name, fred, engine):
     data = fred.get_series(series_id, observation_start='2019-01-01')
@@ -42,7 +44,7 @@ def ingest_series(series_id, series_name, fred, engine):
     print(f"Ingested {len(df)} rows for {series_id} - {series_name}")
 
 def run():
-    fred = Fred(api_key=os.getenv('FRED_API_KEY'))
+    fred = Fred(api_key=FRED_API_KEY)
     engine = create_engine(DB_URL)
     create_table(engine)
     for series_id, series_name in FRED_SERIES.items():
