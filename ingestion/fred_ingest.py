@@ -1,37 +1,52 @@
-"""
-FRED ingestion placeholder.
-
-Later, wire this into Airflow tasks and persist to your chosen warehouse/storage.
-"""
-
-from __future__ import annotations
-
+import pandas as pd
+from fredapi import Fred
+from sqlalchemy import create_engine, text
+from dotenv import load_dotenv
 import os
 
+load_dotenv()
 
-def ingest_fred(series_ids: list[str]) -> None:
-    """
-    Ingest FRED time series for the given `series_ids`.
+DB_URL = f"postgresql+psycopg2://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
 
-    TODO: implement actual API calling + persistence.
-    """
+FRED_SERIES = {
+    'FEDFUNDS': 'Federal Funds Rate',
+    'CPIAUCSL': 'Consumer Price Index',
+    'UNRATE':   'Unemployment Rate',
+    'GS10':     'Ten Year Treasury Yield',
+    'GDPC1':    'Real GDP'
+}
 
-    fred_api_key = os.getenv("FRED_API_KEY")
-    if not fred_api_key or fred_api_key == "replace_me":
-        raise RuntimeError(
-            "Missing/placeholder FRED_API_KEY. Set it in your local environment (.env)."
-        )
+def create_table(engine):
+    with engine.connect() as conn:
+        conn.execute(text("""
+            CREATE TABLE IF NOT EXISTS bronze_macro_indicators (
+                id SERIAL PRIMARY KEY,
+                series_id VARCHAR(20),
+                series_name VARCHAR(100),
+                date DATE,
+                value FLOAT,
+                ingested_at TIMESTAMP DEFAULT NOW()
+            )
+        """))
+        conn.commit()
 
-    # Placeholder: later you might use requests to call the FRED API and store results.
-    _ = series_ids
+def ingest_series(series_id, series_name, fred, engine):
+    data = fred.get_series(series_id, observation_start='2019-01-01')
+    df = data.reset_index()
+    df.columns = ['date', 'value']
+    df['series_id'] = series_id
+    df['series_name'] = series_name
+    df = df[['series_id', 'series_name', 'date', 'value']]
+    df.dropna(inplace=True)
+    df.to_sql('bronze_macro_indicators', engine, if_exists='append', index=False)
+    print(f"Ingested {len(df)} rows for {series_id} - {series_name}")
 
-
-def main() -> None:
-    series_env = os.getenv("FRED_SERIES_IDS", "CPIAUCSL,GDP")
-    series_ids = [s.strip() for s in series_env.split(",") if s.strip()]
-    ingest_fred(series_ids=series_ids)
-
+def run():
+    fred = Fred(api_key=os.getenv('FRED_API_KEY'))
+    engine = create_engine(DB_URL)
+    create_table(engine)
+    for series_id, series_name in FRED_SERIES.items():
+        ingest_series(series_id, series_name, fred, engine)
 
 if __name__ == "__main__":
-    main()
-
+    run()
