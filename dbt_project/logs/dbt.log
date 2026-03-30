@@ -1,0 +1,107 @@
+[0m21:53:08.873451 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bc13e20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cc48520>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cc48340>]}
+
+
+============================== 21:53:08.876331 | 906ab017-e903-49ca-b7f6-18e860152f2f ==============================
+[0m21:53:08.876331 [info ] [MainThread]: Running with dbt=1.10.20
+[0m21:53:08.876687 [debug] [MainThread]: running dbt with arguments {'profiles_dir': '/Users/ashwin/.dbt', 'static_parser': 'True', 'log_path': 'logs', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'use_colors': 'True', 'printer_width': '80', 'invocation_command': 'dbt init marketpulse', 'cache_selected_only': 'False', 'log_cache_events': 'False', 'partial_parse': 'True', 'indirect_selection': 'eager', 'introspect': 'True', 'no_print': 'None', 'log_format': 'default', 'debug': 'False', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'target_path': 'None', 'use_experimental_parser': 'False', 'warn_error': 'None', 'fail_fast': 'False'}
+[0m21:53:08.885158 [info ] [MainThread]: Creating dbt configuration folder at /Users/ashwin/.dbt
+[0m21:53:08.886576 [debug] [MainThread]: Starter project path: /Users/ashwin/Library/Python/3.9/lib/python/site-packages/dbt/include/starter_project
+[0m21:53:08.891361 [info ] [MainThread]: 
+Your new dbt project "marketpulse" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m21:53:08.891603 [info ] [MainThread]: Setting up your profile.
+[0m21:54:00.603488 [info ] [MainThread]: Profile marketpulse written to /Users/ashwin/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m21:54:00.618902 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 51.792747, "process_in_blocks": "0", "process_kernel_time": 0.238002, "process_mem_max_rss": "99942400", "process_out_blocks": "0", "process_user_time": 0.935597}
+[0m21:54:00.620024 [debug] [MainThread]: Command `dbt init` succeeded at 21:54:00.619769 after 51.79 seconds
+[0m21:54:00.621303 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bc13e20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d18a8e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cbdec70>]}
+[0m21:54:00.622567 [debug] [MainThread]: Flushing usage events
+[0m21:54:01.123378 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:55:26.258962 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bf1daf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cf4a460>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10cf4a280>]}
+
+
+============================== 21:55:26.261873 | 794809e7-a47b-4e95-840d-e1163f69f732 ==============================
+[0m21:55:26.261873 [info ] [MainThread]: Running with dbt=1.10.20
+[0m21:55:26.262234 [debug] [MainThread]: running dbt with arguments {'use_colors': 'True', 'fail_fast': 'False', 'empty': 'None', 'target_path': 'None', 'log_cache_events': 'False', 'warn_error': 'None', 'static_parser': 'True', 'indirect_selection': 'eager', 'write_json': 'True', 'debug': 'False', 'no_print': 'None', 'introspect': 'True', 'log_format': 'default', 'cache_selected_only': 'False', 'log_path': 'logs', 'profiles_dir': '/Users/ashwin/.dbt', 'version_check': 'True', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'partial_parse': 'True', 'invocation_command': 'dbt debug', 'printer_width': '80', 'send_anonymous_usage_stats': 'True'}
+[0m21:55:26.271119 [info ] [MainThread]: dbt version: 1.10.20
+[0m21:55:26.271364 [info ] [MainThread]: python version: 3.9.6
+[0m21:55:26.271555 [info ] [MainThread]: python path: /Applications/Xcode.app/Contents/Developer/usr/bin/python3
+[0m21:55:26.271736 [info ] [MainThread]: os info: macOS-26.3-arm64-arm-64bit
+[0m21:55:26.324147 [info ] [MainThread]: Using profiles dir at /Users/ashwin/.dbt
+[0m21:55:26.324431 [info ] [MainThread]: Using profiles.yml file at /Users/ashwin/.dbt/profiles.yml
+[0m21:55:26.324618 [info ] [MainThread]: Using dbt_project.yml file at /Users/ashwin/marketpulse/dbt_project/dbt_project.yml
+[0m21:55:26.325054 [info ] [MainThread]: adapter type: postgres
+[0m21:55:26.325273 [info ] [MainThread]: adapter version: 1.9.1
+[0m21:55:26.325462 [info ] [MainThread]: Configuration:
+[0m21:55:26.325635 [info ] [MainThread]:   profiles.yml file [[32mOK found and valid[0m]
+[0m21:55:26.325804 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m21:55:26.325970 [info ] [MainThread]: Required dependencies:
+[0m21:55:26.326185 [debug] [MainThread]: Executing "git --help"
+[0m21:55:26.345442 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Set `HEAD` or the index to a known state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m21:55:26.346209 [debug] [MainThread]: STDERR: "b''"
+[0m21:55:26.346418 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m21:55:26.346621 [info ] [MainThread]: Connection:
+[0m21:55:26.346827 [info ] [MainThread]:   host: localhost
+[0m21:55:26.347006 [info ] [MainThread]:   port: 5432
+[0m21:55:26.347171 [info ] [MainThread]:   user: airflow
+[0m21:55:26.347334 [info ] [MainThread]:   database: airflow
+[0m21:55:26.347497 [info ] [MainThread]:   schema: public
+[0m21:55:26.347659 [info ] [MainThread]:   connect_timeout: 10
+[0m21:55:26.347820 [info ] [MainThread]:   role: None
+[0m21:55:26.347979 [info ] [MainThread]:   search_path: None
+[0m21:55:26.348139 [info ] [MainThread]:   keepalives_idle: 0
+[0m21:55:26.348316 [info ] [MainThread]:   sslmode: None
+[0m21:55:26.348490 [info ] [MainThread]:   sslcert: None
+[0m21:55:26.348651 [info ] [MainThread]:   sslkey: None
+[0m21:55:26.348812 [info ] [MainThread]:   sslrootcert: None
+[0m21:55:26.348986 [info ] [MainThread]:   application_name: dbt
+[0m21:55:26.349148 [info ] [MainThread]:   retries: 1
+[0m21:55:26.349561 [info ] [MainThread]: Registered adapter: postgres=1.9.1
+[0m21:55:26.418755 [debug] [MainThread]: Acquiring new postgres connection 'debug'
+[0m21:55:26.455903 [debug] [MainThread]: Using postgres connection "debug"
+[0m21:55:26.456180 [debug] [MainThread]: On debug: select 1 as id
+[0m21:55:26.456441 [debug] [MainThread]: Opening a new connection, currently in state init
+[0m21:55:26.662883 [debug] [MainThread]: Postgres adapter: Got a retryable error when attempting to open a postgres connection.
+1 attempts remaining. Retrying in 0 seconds.
+Error:
+connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "airflow"
+
+[0m21:55:26.676202 [debug] [MainThread]: Postgres adapter: Error running SQL: select 1 as id
+[0m21:55:26.676519 [debug] [MainThread]: Postgres adapter: Rolling back transaction.
+[0m21:55:26.676800 [debug] [MainThread]: On debug: No close available on handle
+[0m21:55:26.677074 [info ] [MainThread]:   Connection test: [[31mERROR[0m]
+
+[0m21:55:26.677390 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m21:55:26.677632 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </Users/ashwin/marketpulse/dbt_project/dbt_project.yml> not found
+
+[0m21:55:26.677873 [info ] [MainThread]: dbt was unable to connect to the specified database.
+The database returned the following error:
+
+  >Database Error
+  connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "airflow"
+  
+
+Check your database credentials and try again. For more information, visit:
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m21:55:26.680179 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.46648332, "process_in_blocks": "0", "process_kernel_time": 0.21902, "process_mem_max_rss": "117145600", "process_out_blocks": "0", "process_user_time": 0.878452}
+[0m21:55:26.680519 [debug] [MainThread]: Command `dbt debug` failed at 21:55:26.680446 after 0.47 seconds
+[0m21:55:26.680783 [debug] [MainThread]: Connection 'debug' was properly closed.
+[0m21:55:26.681049 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10bf1daf0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d4f36d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x10d4f3a60>]}
+[0m21:55:26.681368 [debug] [MainThread]: Flushing usage events
+[0m21:55:26.997649 [debug] [MainThread]: An error was encountered while trying to flush usage events

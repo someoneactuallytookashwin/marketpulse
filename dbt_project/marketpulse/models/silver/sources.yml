@@ -1,0 +1,8 @@
+xversion: 2
+
+sources:
+  - name: bronze
+    schema: public
+    tables:
+      - name: bronze_stock_prices
+      - name: bronze_macro_indicators
