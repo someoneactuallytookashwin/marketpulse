@@ -45,7 +45,7 @@ def get_last_date(series_id, engine):
 
 def ingest_series(series_id, series_name, fred, engine):
     last_date = get_last_date(series_id, engine)
-    start = str(last_date) if last_date else "2019-01-01"
+    start = str(last_date) if last_date else "2020-01-01"
     print(f"{series_id}: fetching from {start}")
     data = fred.get_series(series_id, observation_start=start)
     df = data.reset_index()
