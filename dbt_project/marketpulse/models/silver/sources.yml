@@ -1,4 +1,4 @@
-xversion: 2
+version: 2
 
 sources:
   - name: bronze

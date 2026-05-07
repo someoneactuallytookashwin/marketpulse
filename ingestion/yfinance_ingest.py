@@ -1,5 +1,4 @@
 import yfinance as yf
-import pandas_datareader as pdr
 import pandas as pd
 from sqlalchemy import create_engine, text
 import time
@@ -9,12 +8,10 @@ try:
     from airflow.hooks.base import BaseHook
     _conn = BaseHook.get_connection("marketpulse_postgres")
     DB_URL = f"postgresql+psycopg2://{_conn.login}:{_conn.password}@{_conn.host}:{_conn.port}/{_conn.schema}"
-    USE_STOOQ = True
 except Exception:
     from dotenv import load_dotenv
     load_dotenv()
     DB_URL = f"postgresql+psycopg2://{os.getenv('DB_USER')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
-    USE_STOOQ = False
 
 TICKERS = ['SPX', 'AAPL', 'JPM', 'GS', 'SPY']
 TICKER_MAP = {
@@ -50,14 +47,9 @@ def ingest_ticker(ticker, engine):
     start = "2020-01-01" if not last_date else str(last_date)
     print(f"{ticker}: fetching from {start}")
     try:
-        if USE_STOOQ:
-            df = pdr.get_data_stooq(fetch_ticker, start=start)
-            df = df.reset_index()
-            df.columns = [c.lower() for c in df.columns]
-        else:
-            df = yf.download(fetch_ticker, start=start, auto_adjust=True, progress=False)
-            df = df.reset_index()
-            df.columns = [c[0].lower() if isinstance(c, tuple) else c.lower() for c in df.columns]
+        df = yf.download(fetch_ticker, start=start, auto_adjust=True, progress=False)
+        df = df.reset_index()
+        df.columns = [c[0].lower() if isinstance(c, tuple) else c.lower() for c in df.columns]
         if df.empty:
             print(f"{ticker}: no data returned")
             return
